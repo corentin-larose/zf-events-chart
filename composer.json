@@ -1,0 +1,33 @@
+{    
+    "autoload": {
+        "psr-4": {
+            "ZF\\EventsChart\\": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    },
+    "config": {
+        "bin-dir" : "vendor/bin",
+        "process-timeout" : 3600
+    }, 
+    "description": "ZF2 Module providing events chart",
+    "keywords": [
+        "zf2",
+        "zend",
+        "module"
+    ],
+    "license": "BSD-3-Clause",
+    "name": "corentin-larose/zf-events-chart",    
+    "require": {
+        "php": ">=5.3.23",
+        "zendframework/zend-eventmanager": "~2.3",
+        "zendframework/zend-http": "~2.3",
+        "zendframework/zend-mvc": "~2.3"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "*@dev",
+        "phpunit/phpunit": "4.1.*"
+    },
+    "type": "library"
+}
