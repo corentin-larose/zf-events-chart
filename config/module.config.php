@@ -3,7 +3,7 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'ZF\Statsd\EventsChart' => 'ZF\Statsd\EventsChartFactory',
+            'ZF\EventsChart\EventsChartListener' => 'ZF\EventsChart\EventsChartListenerFactory',
         ),
     ),
 

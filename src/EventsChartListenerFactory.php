@@ -23,7 +23,6 @@ class EventsChartListenerFactory implements FactoryInterface
         }
 
         $eventsChartListener = new EventsChartListener();
-        $eventsChartListener->setConfig($config);
 
         return $eventsChartListener;
     }
