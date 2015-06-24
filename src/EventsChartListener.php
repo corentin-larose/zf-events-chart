@@ -4,14 +4,24 @@ namespace ZF\EventsChart;
 
 use Zend\EventManager\AbstractListenerAggregate;
 
-class EventsChartListener extends AbstractListenerAggregate
+class EventsChartListener
+    extends AbstractListenerAggregate
+    implements \Zend\Log\LoggerInterface
 {
+    use \Zend\Log\LoggerAwareTrait;
+
+    protected $config = [];
+
     /**
      * @param EventManagerInterface $events
      * @param int                   $priority
      */
     public function attach(\Zend\EventManager\EventManagerInterface $events, $priority = 1)
     {
+        if (!empty($config['enable'])) {
+            return;
+        }
+
         $sem = $events->getSharedManager();
 
         // Register at very high priority so that stopped
@@ -31,5 +41,10 @@ class EventsChartListener extends AbstractListenerAggregate
             $target,
             json_encode($params)
         );
+    }
+
+    public function setConfig(array $config)
+    {
+        $this->config = $config;
     }
 }
