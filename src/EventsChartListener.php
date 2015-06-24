@@ -32,14 +32,12 @@ class EventsChartListener
     public function onEvent(\Zend\EventManager\Event $event)
     {
         $name   = $event->getName();
-        $params = $event->getParams();
         $target = get_class($event->getTarget());
 
         $event = sprintf(
-            '%s %s %s',
+            'Event %s called on %s',
             $name,
-            $target,
-            json_encode($params)
+            $target
         );
 
         $this->logger->log($this->config['log_level'], $event);
