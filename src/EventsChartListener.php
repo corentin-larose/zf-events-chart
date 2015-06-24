@@ -35,7 +35,7 @@ class EventsChartListener
         $target = get_class($event->getTarget());
 
         $event = sprintf(
-            'Event %s called on %s',
+            'Event %s triggered by %s',
             $name,
             $target
         );
