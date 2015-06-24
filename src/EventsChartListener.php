@@ -31,7 +31,7 @@ class EventsChartListener
 
     public function onEvent(\Zend\EventManager\Event $event)
     {
-        $name   = $event->getName();
+        $name = $event->getName();
         $target = get_class($event->getTarget());
 
         $event = sprintf(
@@ -46,5 +46,7 @@ class EventsChartListener
     public function setConfig(array $config)
     {
         $this->config = $config;
+
+        return $this;
     }
 }

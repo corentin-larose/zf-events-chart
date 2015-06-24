@@ -24,7 +24,7 @@ return array(
         /*
          * Whether to enable module.
          */
-        'enable'             => true,
+        'enable' => true,
 
         'log_level' => \Zend\Log\Logger::INFO,
 
