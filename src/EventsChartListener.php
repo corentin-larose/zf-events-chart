@@ -6,7 +6,7 @@ use Zend\EventManager\AbstractListenerAggregate;
 
 class EventsChartListener
     extends AbstractListenerAggregate
-    implements \Zend\Log\LoggerInterface
+    implements \Zend\Log\LoggerAwareInterface
 {
     use \Zend\Log\LoggerAwareTrait;
 
@@ -35,12 +35,14 @@ class EventsChartListener
         $params = $event->getParams();
         $target = get_class($event->getTarget());
 
-        printf(
+        $event = sprintf(
             '%s %s %s',
             $name,
             $target,
             json_encode($params)
         );
+
+        $this->logger->log($this->config['log_level'], $event);
     }
 
     public function setConfig(array $config)

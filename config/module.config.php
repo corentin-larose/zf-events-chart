@@ -15,12 +15,8 @@ return array(
     ),
 
     'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-
         'factories' => array(
-            'ZF\EventsChart\EventsChartListener' => 'ZF\EventsChart\EventsChartListenerFactory',
+            '\ZF\EventsChart\EventsChartListener' => '\ZF\EventsChart\EventsChartListenerFactory',
         ),
     ),
 
@@ -30,9 +26,11 @@ return array(
          */
         'enable'             => true,
 
+        'log_level' => \Zend\Log\Logger::INFO,
+
         /*
          * Config key for the logger
          */
-        'logger_service_key' => 'log',
+        'logger_service_key' => 'ZF\Events\Chart\Logger',
     ),
 );
