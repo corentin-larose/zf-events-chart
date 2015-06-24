@@ -26,8 +26,8 @@ class EventsChartListenerFactory implements FactoryInterface
 
         $eventsChartListener->setConfig($config);
 
-        if ($config['config_service_key']) {
-            $logger = $serviceLocator->get($config['config_service_key']);
+        if ($config['logger_service_key']) {
+            $logger = $serviceLocator->get($config['logger_service_key']);
 
             if ($logger instanceof \Zend\log\LoggerInterface) {
                 $eventsChartListener->setLogger($logger);
