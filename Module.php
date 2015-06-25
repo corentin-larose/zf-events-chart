@@ -23,7 +23,7 @@ class Module
 
         $config = $sm->get('config');
 
-        if (!empty($config['enable'])) {
+        if (!empty($config['zf-events-chart']['enable'])) {
             $em = $app->getEventManager();
             $em->attachAggregate($sm->get('ZF\EventsChart\EventsChartListener'));
         }
