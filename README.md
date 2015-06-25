@@ -6,6 +6,8 @@ ZF Events Chart
 Introduction
 ------------
 
+BETA!!!
+
 `zf-events-chart` is a ZF2 module for logging events triggered within a Zend Framework 2
 application.
 
