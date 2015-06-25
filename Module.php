@@ -19,9 +19,13 @@ class Module
     public function onBootstrap(\Zend\Mvc\MvcEvent $e)
     {
         $app = $e->getApplication();
-        $em = $app->getEventManager();
         $sm = $app->getServiceManager();
 
-        $em->attachAggregate($sm->get('ZF\EventsChart\EventsChartListener'));
+        $config = $sm->get('config');
+
+        if (!empty($config['enable'])) {
+            $em = $app->getEventManager();
+            $em->attachAggregate($sm->get('ZF\EventsChart\EventsChartListener'));
+        }
     }
 }

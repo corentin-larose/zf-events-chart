@@ -11,6 +11,11 @@ class EventsChartListener
     use \Zend\Log\LoggerAwareTrait;
 
     protected $config = [];
+    
+    /**
+     * @var \Zend\EventManager\SharedEventManagerInterface
+     */
+    protected $sem;
 
     /**
      * @param EventManagerInterface $events
@@ -22,11 +27,11 @@ class EventsChartListener
             return;
         }
 
-        $sem = $events->getSharedManager();
+        $this->sem = $events->getSharedManager();
 
         // Register at very high priority so that stopped
         // propagation don't hide events from us.
-        $this->listeners[] = $sem->attach('*', '*', array($this, 'onEvent'), 10000);
+        $this->listeners[] = $this->sem->attach('*', '*', array($this, 'onEvent'), 10000);
     }
 
     public function onEvent(\Zend\EventManager\Event $event)
@@ -34,10 +39,13 @@ class EventsChartListener
         $name = $event->getName();
         $target = get_class($event->getTarget());
 
+        $listeners = $this->sem->getListeners('*', $name);
+        
         $event = sprintf(
-            'Event %s triggered by %s',
+            'Event %s triggered by %s %s',
             $name,
-            $target
+            $target,
+            count($listeners)
         );
 
         $this->logger->log($this->config['log_level'], $event);
