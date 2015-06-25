@@ -10,6 +10,9 @@ return array(
                         'stream' => 'data/zf-events-chart.log',
                     ),
                 ),
+                array(
+                    'name' => '\Zend\Log\Writer\FirePHP',
+                ),
             ),
         ),
     ),
